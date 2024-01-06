@@ -480,6 +480,8 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
         const strunged = info.selectionText;
         const archiveUrl = `https://web.archive.org/cdx/search/cdx?url=*.${domain}/*&output=json&fl=timestamp,original&filter=~urlkey:${strunged}`;
         chrome.tabs.create({ url: archiveUrl });
+        const archivesUrl = `https://www.google.com/search?q=site:${domain}%20%26%20${strunged}`;
+        chrome.tabs.create({ url: archivesUrl });
     }
     else if (info.menuItemId) {
         const domain = new URL(tab.url).hostname;
